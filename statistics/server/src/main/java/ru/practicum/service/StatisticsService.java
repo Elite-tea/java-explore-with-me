@@ -46,6 +46,7 @@ public class StatisticsService {
             return requestRepository.getAllRequestsWithUri(start, end, uris);
         }
     }
+
     public List<RequestOutDto> getRequestsWithViewsByIp(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique, String ip) {
 
         if (unique) {

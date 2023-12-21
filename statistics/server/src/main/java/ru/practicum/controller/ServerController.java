@@ -58,7 +58,6 @@ public class ServerController {
                                                             @RequestParam(defaultValue = "false") Boolean unique,
                                                             @RequestParam String ip) {
 
-
         LocalDateTime startDT;
         LocalDateTime endDT;
         try {

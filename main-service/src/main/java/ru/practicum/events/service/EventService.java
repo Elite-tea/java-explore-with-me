@@ -218,9 +218,7 @@ public class EventService {
         if (listResponseEntity.getStatusCode() == HttpStatus.OK &&
                 Optional.ofNullable(listResponseEntity.getBody())
                         .map(List::isEmpty).orElse(false)) {
-            events.forEach(event -> {
-                event.setViews(event.getViews() + 1);
-            });
+            events.forEach(event -> event.setViews(event.getViews() + 1));
             eventRepository.saveAll(events);
         }
     }

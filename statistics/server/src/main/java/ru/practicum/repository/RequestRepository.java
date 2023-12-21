@@ -43,6 +43,7 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
             "GROUP BY a.name, r.uri " +
             "ORDER BY COUNT(r.ip) DESC ")
     List<RequestOutDto> getAllRequestsWithoutUri(LocalDateTime start, LocalDateTime end);
+
     @Query(value = "SELECT new ru.practicum.RequestOutDto(a.name, r.uri, COUNT(r.ip)) " +
             "FROM Request as r " +
             "LEFT JOIN App as a ON a.id = r.app.id " +
