@@ -51,6 +51,7 @@ public class ServerController {
         List<RequestOutDto> results = statsService.getRequestsWithViews(startDT, endDT, uris, unique);
         return ResponseEntity.ok().body(results);
     }
+
     @GetMapping("/statsByIp")
     public ResponseEntity<List<RequestOutDto>> statsByIp(@RequestParam String start,
                                                             @RequestParam String end,
