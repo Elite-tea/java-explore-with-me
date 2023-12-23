@@ -49,7 +49,7 @@ public class EventService {
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final EventMapper eventMapper;
-    private final StatisticsClient statisticsClient = new StatisticsClient("http://ewm-stats-server:9090");
+    private final StatisticsClient statisticsClient = new StatisticsClient("http://localhost:9090");
 
     public List<EventFullDto> getAdminEvents(List<Long> users, List<EventState> states, List<Long> categories,
                                              LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size) {

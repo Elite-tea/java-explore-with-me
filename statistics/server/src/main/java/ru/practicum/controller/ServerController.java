@@ -51,13 +51,13 @@ public class ServerController {
         List<RequestOutDto> results = statsService.getRequestsWithViews(startDT, endDT, uris, unique);
         return ResponseEntity.ok().body(results);
     }
-
     @GetMapping("/statsByIp")
     public ResponseEntity<List<RequestOutDto>> statsByIp(@RequestParam String start,
                                                             @RequestParam String end,
                                                             @RequestParam(required = false) List<String> uris,
                                                             @RequestParam(defaultValue = "false") Boolean unique,
                                                             @RequestParam String ip) {
+
 
         LocalDateTime startDT;
         LocalDateTime endDT;

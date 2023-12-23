@@ -11,7 +11,7 @@ public class StatisticsClient {
     private final String statsServerUrl;
     private final WebClient webClient;
 
-    public StatisticsClient(@Value("${stats.server.url}") String statsServerUrl) {
+    public StatisticsClient(@Value("http://localhost:9090") String statsServerUrl) {
         this.statsServerUrl = statsServerUrl;
         webClient = WebClient.create(statsServerUrl);
     }
