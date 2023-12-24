@@ -44,7 +44,32 @@ public class ServerController {
             return ResponseEntity.badRequest().build();
         }
 
+        if (startDT.isAfter(endDT)) {
+            return ResponseEntity.badRequest().build();
+        }
+
         List<RequestOutDto> results = statsService.getRequestsWithViews(startDT, endDT, uris, unique);
+        return ResponseEntity.ok().body(results);
+    }
+
+    @GetMapping("/statsByIp")
+    public ResponseEntity<List<RequestOutDto>> statsByIp(@RequestParam String start,
+                                                            @RequestParam String end,
+                                                            @RequestParam(required = false) List<String> uris,
+                                                            @RequestParam(defaultValue = "false") Boolean unique,
+                                                            @RequestParam String ip) {
+
+
+        LocalDateTime startDT;
+        LocalDateTime endDT;
+        try {
+            startDT = LocalDateTime.parse(start, DTF);
+            endDT = LocalDateTime.parse(end, DTF);
+        } catch (DateTimeParseException e) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        List<RequestOutDto> results = statsService.getRequestsWithViewsByIp(startDT, endDT, uris, unique, ip);
         return ResponseEntity.ok().body(results);
     }
 }
